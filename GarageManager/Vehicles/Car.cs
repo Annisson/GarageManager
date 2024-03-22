@@ -1,6 +1,4 @@
-﻿using static GarageManager.Vehicles.Car;
-
-namespace GarageManager.Vehicles
+﻿namespace GarageManager.Vehicles
 {
     internal class Car : Vehicle
     {
@@ -18,9 +16,9 @@ namespace GarageManager.Vehicles
             CarFuelType = fuelType;
         }
 
-        public virtual string VehicleInformation()
+        public override string VehicleInformation()
         {
-            return base.VehicleInformation() + $", FuelType: {CarFuelType}.";
+            return base.VehicleInformation() + $", FuelType: {CarFuelType}";
         }
     }
 }
