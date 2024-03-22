@@ -1,7 +1,7 @@
 ﻿namespace GarageManager
 {
     // Fordonsklass, basklass för alla fordon
-    internal abstract class Vehicle
+    internal abstract class Vehicle : IVehicle
     {
         public uint VehicleID { get; private set; } // ToDo: Egen klass för att skapa detta?
         public string Color { get; set; }
