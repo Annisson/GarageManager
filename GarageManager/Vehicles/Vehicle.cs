@@ -1,4 +1,4 @@
-﻿namespace GarageManager
+﻿namespace GarageManager.Vehicles
 {
     // Fordonsklass, basklass för alla fordon
     internal abstract class Vehicle : IVehicle

@@ -1,4 +1,4 @@
-﻿namespace GarageManager
+﻿namespace GarageManager.Vehicles
 {
     internal interface IVehicle
     {
