@@ -1,7 +1,4 @@
-﻿
-using System.Xml.Linq;
-
-namespace GarageManager
+﻿namespace GarageManager
 {
     // Fordonsklass, basklass för alla fordon
     internal abstract class Vehicle
