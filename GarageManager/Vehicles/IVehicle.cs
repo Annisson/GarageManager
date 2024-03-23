@@ -4,7 +4,7 @@
     {
         string Color { get; set; }
         int NumberOfWheels { get; set; }
-        uint VehicleID { get; }
+        string VehicleID { get; }
 
         string VehicleInformation();
     }
