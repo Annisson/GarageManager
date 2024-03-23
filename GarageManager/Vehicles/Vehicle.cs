@@ -1,15 +1,16 @@
 ﻿namespace GarageManager.Vehicles
 {
-    // Fordonsklass, basklass för alla fordon
     internal abstract class Vehicle : IVehicle
     {
-        public uint VehicleID { get; private set; } // ToDo: Egen klass för att skapa detta?
+        private static readonly VehicleID vehicleID = new VehicleID(); // Sparar en instans av VehicleID-klassen så vi kan kalla på metoden som genererar unika ID-nummer
+
+        public string VehicleID { get; private set; } 
         public string Color { get; set; }
         public int NumberOfWheels { get; set; }
 
-        protected Vehicle(uint vehicleID, string color, int numberOfWheels)
+        protected Vehicle(string color, int numberOfWheels)
         {
-            VehicleID = vehicleID;
+            VehicleID = vehicleID.GenerateVehicleID(); // Sätter VehicleID till return av metoden som genererat unikt ID-nummer
             Color = color;
             NumberOfWheels = numberOfWheels;
         }
@@ -18,7 +19,5 @@
         {
             return $"VehicleID: {VehicleID}, Color: {Color}, NumberOfWheels: {NumberOfWheels}";
         }
-
-
     }
 }

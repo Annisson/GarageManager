@@ -12,15 +12,17 @@ namespace GarageManager
 
             // TODO: Testar, tas bort
 
-            var car1 = new Car(123, "red", 4, Car.FuelType.Gasoline); 
-            var mc = new Motorcycle(21, "black", 2, Motorcycle.EngineType.Rotary, false);
-            var plane1 = new Airplane(24, "white", 4, 2, 35.79);
+            var car1 = new Car("red", 4, Car.FuelType.Gasoline); 
+            var mc = new Motorcycle("black", 2, Motorcycle.EngineType.Rotary, false);
+            var plane1 = new Airplane("white", 4, 2, 35.79);
+            var bus1 = new Bus("red", 8, 30);
+            var boat1 = new Boat("white", 0, 7);
 
             Console.WriteLine(car1.VehicleInformation()); 
             Console.WriteLine(mc.VehicleInformation());
             Console.WriteLine(plane1.VehicleInformation());
-
-
+            Console.WriteLine(bus1.VehicleInformation());
+            Console.WriteLine(boat1.VehicleInformation());
 
             // ToDo: Ta bort hit
 
