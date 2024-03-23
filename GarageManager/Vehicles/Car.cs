@@ -11,7 +11,7 @@
             Hydrogen
         }
         public FuelType CarFuelType { get; set; }
-        public Car(uint vehicleID, string color, int numberOfWheels, FuelType fuelType) : base(vehicleID, color, numberOfWheels)
+        public Car(string color, int numberOfWheels, FuelType fuelType) : base(color, numberOfWheels)
         {
             CarFuelType = fuelType;
         }

@@ -4,7 +4,8 @@
     {
         public int NumberOfEngines { get; set; }
         public double Wingspan { get; set; }
-        public Airplane(uint vehicleID, string color, int numberOfWheels, int numberOfEngines, double wingspan) : base(vehicleID, color, numberOfWheels)
+
+        public Airplane(string color, int numberOfWheels, int numberOfEngines, double wingspan) : base(color, numberOfWheels)
         {
             NumberOfEngines = numberOfEngines;
             Wingspan = wingspan;

@@ -12,7 +12,7 @@
         }
         public EngineType MotorcycleEngine { get; set; }
         public bool HasSidecar { get; set; }
-        public Motorcycle(uint vehicleID, string color, int numberOfWheels, EngineType motorcycleEngine, bool hasSideCar) : base(vehicleID, color, numberOfWheels)
+        public Motorcycle(string color, int numberOfWheels, EngineType motorcycleEngine, bool hasSideCar) : base(color, numberOfWheels)
         {
             MotorcycleEngine = motorcycleEngine;
             HasSidecar = hasSideCar;
