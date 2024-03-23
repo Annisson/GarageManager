@@ -12,7 +12,7 @@
 
         public override string VehicleInformation()
         {
-            return base.VehicleInformation() + $", NumberOfEngines: {NumberOfEngines}, Wingspan: {Wingspan}";
+            return base.VehicleInformation() + $", NumberOfEngines: {NumberOfEngines}, Wingspan: {Wingspan}m";
         }
     }
 }
