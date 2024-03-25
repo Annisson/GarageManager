@@ -2,23 +2,15 @@
 {
     internal class Car : Vehicle
     {
-        public enum FuelType
+        public int PreviousOwners { get; set; }
+        public Car(string color, int numberOfWheels, int previousOwners) : base(color, numberOfWheels)
         {
-            Gasoline,
-            Diesel,
-            Electric,
-            Hybrid,
-            Hydrogen
-        }
-        public FuelType CarFuelType { get; set; }
-        public Car(string color, int numberOfWheels, FuelType fuelType) : base(color, numberOfWheels)
-        {
-            CarFuelType = fuelType;
+            PreviousOwners = previousOwners;
         }
 
         public override string VehicleInformation()
         {
-            return base.VehicleInformation() + $", FuelType: {CarFuelType}";
+            return base.VehicleInformation() + $", PreviousOwners: {PreviousOwners}";
         }
     }
 }
