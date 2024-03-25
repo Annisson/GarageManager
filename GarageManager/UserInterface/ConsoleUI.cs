@@ -1,8 +1,9 @@
-﻿namespace GarageManager.UserInterface
+﻿using GarageManager.Garage;
+
+namespace GarageManager.UserInterface
 {
     internal class ConsoleUI
     {
-
 
         public static void MainMenu()
         {
@@ -17,12 +18,12 @@
                     + "\n4. Information"
                     + "\n0. Exit the application");
 
-                string input = Console.ReadLine();
+                string? input = Console.ReadLine(); // Släcker null-varningen eftersom null-check görs nedan
 
                 if (string.IsNullOrWhiteSpace(input))
                 {
                     Console.Clear();
-                    Console.WriteLine("Input error");
+                    Console.WriteLine("Incorrect input.");
                 }
                 else
                 {
@@ -33,7 +34,8 @@
                             SetupGarageSubMenu();
                             break;
                         case "2":
-                            Console.WriteLine("Park a vehicle");
+                            GarageHandler gh = new();
+                            gh.ParkVehicle();
                             break;
                         case "3":
                             Console.WriteLine(" Pick up a vehicle");
@@ -42,12 +44,10 @@
                             InformationSubMenu();
                             break;
                         case "0":
-                            run = false;
-                            Environment.Exit(0);
+                            ExitApplication();
                             break;
                         default:
-                            Console.Clear();
-                            Console.WriteLine("Please enter some valid input (1, 2, 3, 4 or 0)");
+                            SwitchDefault();
                             break;
                     }
                 }
@@ -66,7 +66,7 @@
                     + "\n3. Return to the main menu"
                     + "\n0. Exit the application");
 
-                string input = Console.ReadLine();
+                string? input = Console.ReadLine(); // Släcker null-varningen eftersom null-check görs nedan
 
                 if (string.IsNullOrWhiteSpace(input))
                 {
@@ -88,12 +88,10 @@
                             MainMenu();
                             break;
                         case "0":
-                            run = false;
-                            Environment.Exit(0);
+                            ExitApplication();
                             break;
                         default:
-                            Console.Clear();
-                            Console.WriteLine("Please enter some valid input (1, 2, 3, 4 or 0)");
+                            SwitchDefault();
                             break;
                     }
                 }
@@ -114,7 +112,7 @@
                     + "\n5. Return to the main menu"
                     + "\n0. Exit the application");
 
-                string input = Console.ReadLine();
+                string? input = Console.ReadLine(); // Släcker null-varningen eftersom null-check görs nedan
 
                 if (string.IsNullOrWhiteSpace(input))
                 {
@@ -142,19 +140,26 @@
                             MainMenu();
                             break;
                         case "0":
-                            run = false;
-                            Environment.Exit(0);
+                            ExitApplication();
                             break;
                         default:
-                            Console.Clear();
-                            Console.WriteLine("Please enter some valid input (1, 2, 3, 4, 5 or 0)");
+                            SwitchDefault();
                             break;
                     }
                 }
             } while (run);
         }
 
+        private static void ExitApplication()
+        {
+            Console.WriteLine("Exiting application...");
+            Environment.Exit(0);
+        }
 
-
+        private static void SwitchDefault()
+        {
+            Console.Clear();
+            Console.WriteLine("Please enter some valid input (1, 2, 3, 4, 5 or 0)");
+        }
     }
 }
