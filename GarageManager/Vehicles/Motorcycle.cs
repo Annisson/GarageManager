@@ -2,25 +2,15 @@
 {
     internal class Motorcycle : Vehicle
     {
-        public enum EngineType
+        public double Cylindervolume  { get; set; }
+        public Motorcycle(string color, int numberOfWheels, double cylindervolume) : base(color, numberOfWheels)
         {
-            InlineFour,
-            Vtwin,
-            SingleCylinder,
-            Rotary,
-            Boxer
-        }
-        public EngineType MotorcycleEngine { get; set; }
-        public bool HasSidecar { get; set; }
-        public Motorcycle(string color, int numberOfWheels, EngineType motorcycleEngine, bool hasSideCar) : base(color, numberOfWheels)
-        {
-            MotorcycleEngine = motorcycleEngine;
-            HasSidecar = hasSideCar;
+            Cylindervolume = cylindervolume;
         }
 
         public override string VehicleInformation()
         {
-            return base.VehicleInformation() + $", MotorcycleEngine: {MotorcycleEngine}, HasSidecar: {(HasSidecar ? "Yes" : "No")}";
+            return base.VehicleInformation() + $", Cylindervolume: {Cylindervolume}";
         }
     }
 }
