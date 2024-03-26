@@ -150,5 +150,72 @@ namespace GarageManager.Garage
             }
             consoleUI.PauseAndClearConsole();
         }
+
+        public void SearchVehicleByProperties(ConsoleUI consoleUI)
+        {
+            string userSearchInput = Util.GetStringInput("Avaliable propreties to search for are VechicleID, Color, and/or NumberOfWheels" +
+                "\nInput example; Color: Red, NumberOfWheels: 4" +
+                "\nYour search: ");
+
+            string[] criteriaSplit = userSearchInput.Split(',');  // Delar upp userinput, t.ex skulle ovan ge "Color : Red" och "NumberOfWheels: 4".
+
+            List<Vehicle> matchingVehicles = new List<Vehicle>(); // För att spara ned alla träffar
+
+            foreach (Vehicle vehicle in garage)
+            {
+                bool vehicleFound = true;
+
+                foreach (var item in criteriaSplit)
+                {
+                    string[] parts = item.Split(':'); // Delar upp sök så t.ex. "Color : Red" nu blir "Color" och "Red"
+                    string propertyName = parts[0].Trim(); // Här sparas property, t.ex "Color" samt trimmar bort alla spaces innan och efter ordet
+                    string propertyValue = parts[1].Trim(); // Här sparas sökordet, t.ex "Red" samt trimmar bort alla spaces innan och efter ordet
+
+                    switch (propertyName) // Kollar om property input stämmer med faktiska properties nedan
+                    {
+                        case "Color":
+                            if (!string.Equals(vehicle.Color, propertyValue, StringComparison.OrdinalIgnoreCase)) // Om fordonet inte har Color + det värde som angavs
+                            {                                                                               // så sätts bool nedan till false och då sparas inte fordonet
+                                vehicleFound = false;
+                            }
+                            break;
+                        case "NumberOfWheels":
+                            if (vehicle.NumberOfWheels != int.Parse(propertyValue))
+                            {
+                                vehicleFound = false;
+                            }
+                            break;
+                        default: // Om property name är fel
+                            vehicleFound = false; 
+                            break;
+                    }
+
+                    if (!vehicleFound) // Om inget i sökningen stämmer alls på current vechicle
+                    {
+                        break;
+                    }
+                }
+
+                if (vehicleFound) // Om boolen fortfarande är true så finns fordonet, och då läggs den till i listan
+                {
+                    matchingVehicles.Add(vehicle);
+                }
+            }
+
+            if (matchingVehicles.Count > 0) // Om det finns minst ett fordon i listan så printas de ut i konsollen
+            {
+                Console.WriteLine("Vehicles found that match the search input:");
+                foreach (var vehicle in matchingVehicles)
+                {
+                    Console.WriteLine(vehicle.VehicleInformation());
+                }
+            }
+            else
+            {
+                Console.WriteLine("There are no vehicles that match the search input.");
+            }
+            consoleUI.PauseAndClearConsole();
+        }
+
     }
 }

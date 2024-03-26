@@ -103,7 +103,7 @@ namespace GarageManager
                             handler.SearchVehicleByID(consoleUI);
                             break;
                         case "4":
-                            Console.WriteLine("Search vehicle by properties");
+                            handler.SearchVehicleByProperties(consoleUI);
                             break;
                         case "5":
                             MainMenu();
