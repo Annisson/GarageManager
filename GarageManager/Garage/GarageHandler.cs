@@ -1,15 +1,55 @@
 ﻿using GarageManager.Helpers;
+using GarageManager.UserInterface;
 using GarageManager.Vehicles;
 
 namespace GarageManager.Garage
 {
     internal class GarageHandler
     {
-        //  ingen kontakt mellan Garage och UI, allt hamnar här
+        private Garage<Vehicle> garage; // Default 50 parkeringsplatser
+        private int capacity;
 
-        Garage<Vehicle> newGarage = new(10);
+        public GarageHandler()
+        {
+            garage = new Garage<Vehicle>(50); // Default 50 parkeringsplatser
+        }
 
-        public void ParkVehicle()
+
+        public string SetupNewGarage(int capacity) // Låter användaren bestämma antal platser i garaget
+        {
+            this.capacity = capacity;
+            garage = new Garage<Vehicle>(this.capacity); // Tilldelar nya värdet som användaren valt
+
+            if (garage is not null)
+            {
+                return $"Garage setup successful. You now have {capacity} available slots in the garage.";
+            }
+            else
+            {
+                return "Failed to setup garage.";
+            }
+
+        }
+
+        public void UseExistingGarage(ConsoleUI consoleUI) // Garage med några fordon redan populerade
+        {
+            garage.AddVehicle(new Car("Red", 4, 2));
+            garage.AddVehicle(new Motorcycle("Black", 2, 400));
+            garage.AddVehicle(new Airplane("White", 4, 2, 35.79));
+            garage.AddVehicle(new Bus("Red", 8, 30));
+            garage.AddVehicle(new Boat("White", 0, 7));
+
+            if (garage is not null)
+            {
+                consoleUI.ExistingGarageContents(garage);
+            }
+            else
+            {
+                Console.WriteLine("Garage is not initialized.");
+            }
+        }
+
+        public void ParkVehicle(ConsoleUI consoleUI)
         {
             Console.WriteLine("\nPlease enter information below about the vehicle you want to park");
 
@@ -19,18 +59,16 @@ namespace GarageManager.Garage
 
             Vehicle vehicle = CreateVehicle(type, color, numberOfWheels); // Kallar på createVehicle metoden och skickar in det användaren valt som gäller för alla vehicles
 
-            if (vehicle != null)
+            if (vehicle is not null)
             {
-                newGarage.AddVehicle(vehicle); // Lägg till i garaget
+                garage.AddVehicle(vehicle); // Lägg till i garaget
                 Console.WriteLine(vehicle.VehicleInformation()); // Skriver ut alla egenskaper
             }
             else
             {
                 Console.WriteLine("Invalid vehicle type.");
             }
-            Console.WriteLine("\nPress Enter to continue..."); // Paus för att inte hoppa direkt till menyn igen
-            Console.ReadLine();
-            Console.Clear();
+            consoleUI.PauseAndClearConsole();
         }
 
         private Vehicle CreateVehicle(string type, string color, int numberOfWheels)
@@ -62,10 +100,6 @@ namespace GarageManager.Garage
                     return null!; // Släcker null-varningen eftersom det hanteras i ParkVehicle metoden
             }
         }
-
-
-
-
 
     }
 }
