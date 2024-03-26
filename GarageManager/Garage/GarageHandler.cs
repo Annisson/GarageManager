@@ -101,5 +101,27 @@ namespace GarageManager.Garage
             }
         }
 
+        public void PickUpVehicle(string vehicleID)
+        {
+            garage.RemoveVehicle(vehicleID);
+        }
+
+        public void ListAllVehicles(ConsoleUI consoleUI)
+        {
+
+            if (garage is not null)
+            {
+                consoleUI.PrintGarageContents(garage);
+            }
+            else
+            {
+                Console.WriteLine("Garage is not initialized.");
+            }
+        
+        }
+
+
+
+
     }
 }

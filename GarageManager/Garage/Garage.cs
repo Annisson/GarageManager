@@ -27,11 +27,25 @@ namespace GarageManager.Garage
             }
         }
 
-        public void RemoveVehicle(T vehicle)
+        public void RemoveVehicle(string vehicleID)
         {
-            // ToDo: Remove vehicle
+            string searchID = vehicleID.ToUpper();
 
+            if (searchID is not null)
+            {
+                T vehicleToRemove = vehicles.FirstOrDefault(x => x != null && x.VehicleID.ToUpper() == searchID)!; // Första bästa Vehicle som matchar user input VehicleID
 
+                if (vehicleToRemove is not null) // Om fordonet hittas
+                {
+                    int index = Array.IndexOf(vehicles, vehicleToRemove); // Spara index för det fordonet som ska tas bort
+                    vehicles[index] = null!; // Sätt till null för att ta bort fordonet, nu är platsen ledig igen
+                    Console.WriteLine($"Vehicle with ID \"{vehicleID}\" has been removed from the garage.");
+                }
+                else
+                {
+                    Console.WriteLine($"Vehicle with ID \"{vehicleID}\" not found in the garage.");
+                }
+            }
         }
 
         public IEnumerator<T> GetEnumerator()

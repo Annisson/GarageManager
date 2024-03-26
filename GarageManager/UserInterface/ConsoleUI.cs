@@ -30,6 +30,26 @@ namespace GarageManager.UserInterface
             PauseAndClearConsole();
         }
 
+        public void PrintRemoveVehicle(GarageHandler handler)
+        {
+            string vehicleID = Util.GetStringInput("Enter the VehicleID of the vehicle you want to remove: "); 
+            handler.PickUpVehicle(vehicleID); // Skicka in ID nummer för fordonet som ska tas bort
+            PauseAndClearConsole();
+        }
+
+        public void PrintGarageContents(IEnumerable<Vehicle> vehicles)
+        {
+            Console.WriteLine("\nVehicles currently in the garage:");
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine(vehicle.VehicleInformation());
+            }
+            PauseAndClearConsole();
+        }
+
+
+
+
         public void PauseAndClearConsole()
         {
             Console.WriteLine("\nPress Enter to continue..."); // Paus för att inte hoppa direkt till menyn igen

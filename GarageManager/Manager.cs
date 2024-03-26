@@ -1,12 +1,12 @@
 ﻿using GarageManager.Garage;
-using GarageManager.Helpers;
 using GarageManager.UserInterface;
+using System;
 
 namespace GarageManager
 {
     internal class Manager
     {
-
+           
         internal static void Run()
         {
             Console.WriteLine("~*~ Welcome to my Garage ~*~\n");
@@ -51,10 +51,10 @@ namespace GarageManager
                             handler.ParkVehicle(consoleUI);
                             break;
                         case "4":
-                            Console.WriteLine("Pick up a vehicle");  // ToDo: Pick up vehicle/remove
+                            consoleUI.PrintRemoveVehicle(handler);
                             break;
                         case "5":
-                            InformationSubMenu();
+                            InformationSubMenu(handler);
                             break;
                         case "0":
                             ExitApplication();
@@ -67,8 +67,9 @@ namespace GarageManager
             } while (run);
         }
 
-        public static void InformationSubMenu()
+        public static void InformationSubMenu(GarageHandler handler)
         {
+            ConsoleUI consoleUI = new ConsoleUI(handler);
             bool run = true;
 
             do
@@ -94,7 +95,7 @@ namespace GarageManager
                     switch (input)
                     {
                         case "1":
-                            Console.WriteLine("List of all vehicles and their properties");
+                            handler.ListAllVehicles(consoleUI);
                             break;
                         case "2":
                             Console.WriteLine("List of vehicletypes and number of each type");
