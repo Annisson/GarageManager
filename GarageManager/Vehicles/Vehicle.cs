@@ -17,7 +17,7 @@
 
         public virtual string VehicleInformation()
         {
-            return $"VehicleID: {VehicleID}, Color: {Color}, NumberOfWheels: {NumberOfWheels}";
+            return $"{GetType().Name} with VehicleID: {VehicleID}, Color: {Color}, NumberOfWheels: {NumberOfWheels}";
         }
     }
 }
