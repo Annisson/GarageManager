@@ -4,8 +4,8 @@ namespace GarageManager.Vehicles
 {
     public class VehicleID
     {
-        private static Random random = new Random(); 
-        private static HashSet<string> usedIDs = new HashSet<string>(); // HashSet för att spara alla unika ID-nummer vartefter de skapas
+        private static readonly Random random = new();  // Sätter readonly för att de inte ska kunna sättas någon annanstans i projektet
+        private static readonly HashSet<string> usedIDs = []; // HashSet för att spara alla unika ID-nummer vartefter de skapas
 
         public string GenerateVehicleID() // För att generera unika ID-nummer (t.ex. ABC123)
         {
@@ -13,7 +13,7 @@ namespace GarageManager.Vehicles
             do
             {
                 char[] letterChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray(); // Dessa ska gå att välja för de första 3 characters i ID-numret
-                StringBuilder stringBuilder= new StringBuilder(); // För att bygga ihop nya ID-numret
+                StringBuilder stringBuilder= new(); // För att bygga ihop nya ID-numret
                 for (int i = 0; i < 3; i++) // Så länge i är mindre än 3 (antalet vi behöver för första delen), så genereras en ny random bokstav och läggs till i strängen
                 {
                     stringBuilder.Append(letterChars[random.Next(letterChars.Length)]);

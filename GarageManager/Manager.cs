@@ -69,7 +69,7 @@ namespace GarageManager
 
         public static void InformationSubMenu(GarageHandler handler)
         {
-            ConsoleUI consoleUI = new ConsoleUI(handler);
+            ConsoleUI consoleUI = new(handler);
             bool run = true;
 
             do

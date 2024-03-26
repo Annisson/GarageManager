@@ -2,7 +2,7 @@
 {
     internal abstract class Vehicle : IVehicle
     {
-        private static readonly VehicleID vehicleID = new VehicleID(); // Sparar en instans av VehicleID-klassen så vi kan kalla på metoden som genererar unika ID-nummer
+        private static readonly VehicleID vehicleID = new(); // Sparar en instans av VehicleID-klassen så vi kan kalla på metoden som genererar unika ID-nummer
 
         public string VehicleID { get; private set; } 
         public string Color { get; set; }
