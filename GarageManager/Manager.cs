@@ -1,6 +1,5 @@
 ﻿using GarageManager.Garage;
 using GarageManager.UserInterface;
-using System;
 
 namespace GarageManager
 {
