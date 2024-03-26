@@ -20,7 +20,7 @@ namespace GarageManager.UserInterface
             Console.WriteLine(setupMessage);
         }
 
-        public void ExistingGarageContents(IEnumerable<Vehicle> vehicles)
+        public void PrintGarageContents(IEnumerable<Vehicle> vehicles)
         {
             Console.WriteLine("\nVehicles currently in the garage:");
             foreach (var vehicle in vehicles)
@@ -36,19 +36,6 @@ namespace GarageManager.UserInterface
             handler.PickUpVehicle(vehicleID); // Skicka in ID nummer för fordonet som ska tas bort
             PauseAndClearConsole();
         }
-
-        public void PrintGarageContents(IEnumerable<Vehicle> vehicles)
-        {
-            Console.WriteLine("\nVehicles currently in the garage:");
-            foreach (var vehicle in vehicles)
-            {
-                Console.WriteLine(vehicle.VehicleInformation());
-            }
-            PauseAndClearConsole();
-        }
-
-
-
 
         public void PauseAndClearConsole()
         {

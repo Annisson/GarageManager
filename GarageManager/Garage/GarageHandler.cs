@@ -41,7 +41,7 @@ namespace GarageManager.Garage
 
             if (garage is not null)
             {
-                consoleUI.ExistingGarageContents(garage);
+                consoleUI.PrintGarageContents(garage);
             }
             else
             {
