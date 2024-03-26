@@ -100,7 +100,7 @@ namespace GarageManager
                             Console.WriteLine("List of vehicletypes and number of each type");
                             break;
                         case "3":
-                            Console.WriteLine("Search vehicle by ID-number");
+                            handler.SearchVehicleByID(consoleUI);
                             break;
                         case "4":
                             Console.WriteLine("Search vehicle by properties");

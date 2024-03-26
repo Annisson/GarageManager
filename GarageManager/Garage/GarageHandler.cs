@@ -120,8 +120,25 @@ namespace GarageManager.Garage
         
         }
 
+        public void SearchVehicleByID(ConsoleUI consoleUI)
+        {
+            string vehicleID = Util.GetStringInput("Search for the following VehicleID(input ex. ABC123): ").ToUpper();
 
+            if (vehicleID is not null)
+            {
+                // Första bästa Vehicle som matchar användarens input av VehicleID, kan hantera acb123, AbC123, ABC123
+                Vehicle vehicleToRemove = garage.FirstOrDefault(x => x != null && string.Equals(x.VehicleID, vehicleID, StringComparison.OrdinalIgnoreCase))!;
 
-
+                if (vehicleToRemove is not null) // Om fordonet hittas
+                {
+                    Console.WriteLine($"Vehicle with ID \"{vehicleID}\" was found!");
+                }
+                else
+                {
+                    Console.WriteLine($"There is no vehicle with ID \"{vehicleID}\" in this garage.");
+                }
+            }
+            consoleUI.PauseAndClearConsole();
+        }
     }
 }
