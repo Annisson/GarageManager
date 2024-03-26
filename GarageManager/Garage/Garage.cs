@@ -33,7 +33,8 @@ namespace GarageManager.Garage
 
             if (searchID is not null)
             {
-                T vehicleToRemove = vehicles.FirstOrDefault(x => x != null && x.VehicleID.ToUpper() == searchID)!; // Första bästa Vehicle som matchar user input VehicleID
+                // Första bästa Vehicle som matchar användarens input av VehicleID, kan hantera acb123, AbC123, ABC123
+                T vehicleToRemove = vehicles.FirstOrDefault(x => x != null && string.Equals(x.VehicleID, searchID, StringComparison.OrdinalIgnoreCase))!; 
 
                 if (vehicleToRemove is not null) // Om fordonet hittas
                 {
