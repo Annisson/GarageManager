@@ -97,7 +97,7 @@ namespace GarageManager
                             handler.ListAllVehicles(consoleUI);
                             break;
                         case "2":
-                            Console.WriteLine("List of vehicletypes and number of each type");
+                            handler.ListAllVehicleTypes(consoleUI);
                             break;
                         case "3":
                             handler.SearchVehicleByID(consoleUI);

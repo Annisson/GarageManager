@@ -108,7 +108,6 @@ namespace GarageManager.Garage
 
         public void ListAllVehicles(ConsoleUI consoleUI)
         {
-
             if (garage is not null)
             {
                 consoleUI.PrintGarageContents(garage);
@@ -117,7 +116,18 @@ namespace GarageManager.Garage
             {
                 Console.WriteLine("Garage is not initialized.");
             }
-        
+        }
+
+        public void ListAllVehicleTypes(ConsoleUI consoleUI)
+        {
+            if (garage is not null)
+            {
+                consoleUI.PrintListAllVehicleTypes(garage);
+            }
+            else
+            {
+                Console.WriteLine("Garage is not initialized.");
+            }
         }
 
         public void SearchVehicleByID(ConsoleUI consoleUI)
