@@ -19,7 +19,7 @@ namespace GarageManager.Garage
             if (index != -1) // FindIndex returnerar -1 om den inte hittar en ledig plats, så om index inte är -1 så tilldelas första bästa plats nedan
             {
                 vehicles[index] = vehicle; // Tilldelar arrayen den platsen som var ledig
-                Console.WriteLine($"\nThe {vehicle.GetType().Name} with ID-number \"{vehicle.VehicleID}\" has been added to the garage.");
+                Console.WriteLine($"The {vehicle.GetType().Name} with ID-number \"{vehicle.VehicleID}\" has been added to the garage.");
             }
             else
             {
@@ -27,22 +27,21 @@ namespace GarageManager.Garage
             }
         }
 
-        // Metod att kalla på för att lägga till vehicles
-
-        public void RemoveVehicle(Vehicle vehicle)
+        public void RemoveVehicle(T vehicle)
         {
+            // ToDo: Remove vehicle
+
 
         }
-
-        // Metod för att ta bort vehicles
-
-
 
         public IEnumerator<T> GetEnumerator()
         {
             foreach (T vehicle in vehicles) 
             {
-                yield return vehicle; // Returnerar en vehicle åt gången
+                if (vehicle is not null)
+                {
+                    yield return vehicle; // Returnerar en vehicle åt gången om den inte är null
+                }
             }
         }
 
