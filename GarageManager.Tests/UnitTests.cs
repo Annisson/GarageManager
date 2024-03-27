@@ -20,5 +20,22 @@ namespace GarageManager.Tests
             Assert.Contains(vehicleToAdd, garage); // Kollar att förvantade utgång(flygplanet), stämmer med den faktiskta utgången
         }
 
+        [Fact]
+        public void RemoveVehicle_ShouldRemoveVehicleFromGarage()
+        {
+            // Arrange
+            var garage = new Garage<Vehicle>(5);
+            var vehicleToAdd = new Car("Red", 4, 2); // Lägger till en Car i garaget som sedan ska kunna tas bort
+            garage.AddVehicle(vehicleToAdd);
+
+            // Act
+            string vehicleToRemoveId = vehicleToAdd.VehicleID; // Plockar ut VehicleID som satts på Car
+            garage.RemoveVehicle(vehicleToRemoveId); // Tar bort Vehicle som matchar VehicleID ovan
+
+            //Assert
+            Assert.DoesNotContain(vehicleToAdd, garage); // Jämför Car jag skickade in och kollar att Garaget INTE innehåller den vehiclen
+        }
+
+
     }
 }
