@@ -4,7 +4,7 @@ using GarageManager.Vehicles;
 
 namespace GarageManager.Garage
 {
-    internal class GarageHandler
+    internal class GarageHandler : IGarageHandler
     {
         private Garage<Vehicle> garage; // Default 50 parkeringsplatser
         private int capacity;
@@ -186,7 +186,7 @@ namespace GarageManager.Garage
                             }
                             break;
                         default: // Om property name är fel
-                            vehicleFound = false; 
+                            vehicleFound = false;
                             break;
                     }
 
